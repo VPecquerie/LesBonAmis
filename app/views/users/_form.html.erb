@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-    
+
   <div class="form-group">
     <%= form.label :name %>
     <%= form.text_field :name, id: :user_name, class: 'form-control'  %>
@@ -24,13 +24,13 @@
 
   <div class="form-groups">
     <%= form.label :password %>
-    <%= form.text_field :password, id: :user_password, class: 'form-control' %>
+    <%= form.password_field :password, id: :user_password, class: 'form-control' %>
   </div>
 
   <% if !user.persisted? %>
-    <div class="field">
+    <div class="form-groups">
       <%= form.label :password_confirmation %>
-      <%= form.text_field :password_confirmation, id: :user_password_confirmation %>
+      <%= form.password_field :password_confirmation, id: :user_password_confirmation, class: 'form-control' %>
     </div>
   <% end %>
 

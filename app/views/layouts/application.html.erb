@@ -27,8 +27,13 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">Accueil</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <% if @current_user %>
+            <%= link_to 'Déconnexion', login_path, class: 'nav-link' %>
+          <% else %>
+            <%= link_to 'Connexion', login_path, class: 'nav-link' %>
+          <% end %>
         </li>
       </ul>
     </div>

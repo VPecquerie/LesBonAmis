@@ -1,7 +1,18 @@
 <h1>Connexion</h1>
-<a href="/">Retourner à l'accueil</a>
+<br />
 <%= form_tag login_path, method: :post do %>
-    <input type="text" name="name" />
-    <input type="password" name="password" />
-    <input type="submit" value="Se connecter" />
+
+  <div class="form-groups">
+    <label for="name">Nom d'utilisateur: </label>
+    <input class="form-control"  type="text" name="name" />
+  </div>
+
+  <div class="form-groups">
+    <label for="password">Mot de passe: </label>
+    <input class="form-control" type="password" name="password" />
+  </div>
+
+  <br /><br />
+  <input type="submit" class="btn btn-success" value="Se connecter" /> ou <a href="/users/new" class="btn btn-primary">S'inscrire</a>
+
 <% end %>
