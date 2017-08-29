@@ -70,18 +70,18 @@ class UsersController < ApplicationController
     if @current_user
       session[:user_id] = @current_user.id
       flash[:info] = "Bienvenue #{@current_user.name} !"
-      redirect_to "/"
+      redirect_to root_path
     else
       session[:user_id] = nil
       flash[:info] = "Échec de la connexion"
-      redirect_to "/users/login"
+      redirect_to login_path
     end
   end
 
   def logout
     session[:user_id] = nil
     flash[:info] = "Vous êtes maintenant déconnecté."
-    redirect_to "/"
+    redirect_to root_path
   end
 
   private
