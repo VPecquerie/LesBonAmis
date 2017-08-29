@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>Intitulé:</strong>
   <%= @expense.title %>
 </p>
 
 <p>
-  <strong>Amount:</strong>
+  <strong>Montant:</strong>
   <%= @expense.amount_cents %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Payeur:</strong>
   <%= @expense.user.name %>
 </p>
 
-<%= link_to 'Edit', edit_expense_path(@expense) %> |
-<%= link_to 'Back', expenses_path %>
+<%= link_to 'Editer', edit_expense_path(@expense) %> |
+<%= link_to 'Retour', expenses_path %>

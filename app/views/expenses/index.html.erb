@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Expenses</h1>
+<h1>Dépenses</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Amount cents</th>
-      <th>User</th>
+      <th>Intitulé</th>
+      <th>Montant</th>
+      <th>Payeur</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +18,9 @@
         <td><%= expense.title %></td>
         <td><%= expense.amount_cents %></td>
         <td><%= expense.user.name %></td>
-        <td><%= link_to 'Show', expense %></td>
-        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
-        <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Afficher', expense %></td>
+        <td><%= link_to 'Editer', edit_expense_path(expense) %></td>
+        <td><%= link_to 'Supprimer', expense, method: :delete, data: { confirm: 'Etes vous sûr ?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Expense', new_expense_path %>
+<%= link_to 'Nouvelle Dépense', new_expense_path %>
