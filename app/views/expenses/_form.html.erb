@@ -21,10 +21,9 @@
     <%= form.text_field :amount_cents, id: :expense_amount_cents %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :expense_user_id %>
-  </div>
+  <% if !expense.persisted? %>
+    <%= form.hidden_field :user_id, id: :expense_user_id, :value => @current_user.id %>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
