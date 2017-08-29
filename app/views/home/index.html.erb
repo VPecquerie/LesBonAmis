@@ -1,1 +1,10 @@
 <h1>Les Bons Amis</h1>
+<% if @current_user %>
+    <h2>Bienvenue <%= @current_user.name %> !</h2>
+    <%= form_tag logout_path, method: :delete do %>
+        <input type="submit" value="Déconnexion" />
+    <% end %>
+<% else %>
+    <h2>Bienvenue visiteur anonyme !</h2>
+    <%= link_to 'Connexion', login_path %>
+<% end %>

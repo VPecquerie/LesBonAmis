@@ -61,6 +61,29 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users/login
+  def login
+  end
+
+  def check
+    @current_user = User.find_by(name: params[:name]).try(:authenticate, params[:password])
+    if @current_user
+      session[:user_id] = @current_user.id
+      flash[:info] = "Bienvenue #{@current_user.name} !"
+      redirect_to "/"
+    else
+      session[:user_id] = nil
+      flash[:info] = "Échec de la connexion"
+      redirect_to "/users/login"
+    end
+  end
+
+  def logout
+    session[:user_id] = nil
+    flash[:info] = "Vous êtes maintenant déconnecté."
+    redirect_to "/"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -69,6 +92,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 end
