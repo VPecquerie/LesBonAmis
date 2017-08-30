@@ -47,7 +47,6 @@ class ExpensesController < ApplicationController
     end
 
     @expense = Expense.new(expense_params)
-    @user_ids = @expense.user_ids
 
     respond_to do |format|
       if @expense.save
