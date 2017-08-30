@@ -47,17 +47,14 @@ class ExpensesController < ApplicationController
     end
 
     @expense = Expense.new(expense_params)
-    @users = @expense.users
+    @user_ids = @expense.user_ids
 
     respond_to do |format|
       if @expense.save
-        @expense.users.each do |k,v|
-          User.find(k) << @expense
-        end
         format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
         format.json { render :show, status: :created, location: @expense }
       else
-        format.html { redirect_to :new }
+        format.html { redirect_to :new_expense }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
     end
@@ -103,6 +100,6 @@ class ExpensesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def expense_params
-      params.require(:expense).permit(:title, :amount_cents, :user_id, :users)
+      params.require(:expense).permit(:title, :amount_cents, :user_id, user_ids: [])
     end
 end

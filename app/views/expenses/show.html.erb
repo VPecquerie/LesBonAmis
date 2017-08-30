@@ -15,7 +15,7 @@
   <%= @expense.user.name %>
 </p>
 
-<% if @expense.users.nil? %>
+<% if !@expense.users.empty? %>
   <p>Beneficiaires :</p>
   <ul>
     <% @expense.users.each do |user|%>
