@@ -108,8 +108,8 @@ class ExpensesController < ApplicationController
     @user = User.find(@current_user.id)
     @expenses = @user.expenses
 
-    @user_spent = 0
-    @users_debtor = 0
+    @user_spent = Money.new(0)
+    @users_debtor = Money.new(0)
 
     @expenses.each do |expense|
       @number_of_users = expense.users.count

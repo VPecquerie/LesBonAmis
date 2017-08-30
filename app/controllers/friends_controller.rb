@@ -29,8 +29,8 @@ class FriendsController < ApplicationController
 
     @expenses = @expenses_user + @expenses_friend
 
-    @user_spent = 0
-    @user_debtor = 0
+    @user_spent = Money.new(0)
+    @user_debtor = Money.new(0)
 
     @expenses.each do |expense|
       @number_of_users = expense.users.count
