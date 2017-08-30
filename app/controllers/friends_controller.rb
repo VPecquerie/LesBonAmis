@@ -34,12 +34,12 @@ class FriendsController < ApplicationController
 
     @expenses.each do |expense|
       @number_of_users = expense.users.count
-      @final_expense = (expense.amount_cents / @number_of_users) * (@number_of_users - 1)
+      @user_expense = expense.amount / @number_of_users
 
       if expense.user_id == @current_user.id
-        @user_spent += @final_expense
-      elsif expense.user_id == @friend.id
-        @user_debtor += @final_expense
+        @user_spent += @user_expense * (@number_of_users - 1)
+      else
+        @user_debtor += @user_expense
       end
     end
 
