@@ -15,5 +15,14 @@
   <%= @expense.user.name %>
 </p>
 
+<% if @expense.users.nil? %>
+  <p>Beneficiaires :</p>
+  <ul>
+    <% @expense.users.each do |user|%>
+      <li><%= user.name %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= link_to 'Editer', edit_expense_path(@expense) %> |
 <%= link_to 'Retour', expenses_path %>
