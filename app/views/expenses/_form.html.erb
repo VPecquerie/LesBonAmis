@@ -21,9 +21,23 @@
     <%= form.text_field :amount_cents, id: :expense_amount_cents %>
   </div>
 
-  <% if !expense.persisted? %>
-    <%= form.hidden_field :user_id, id: :expense_user_id, :value => @current_user.id %>
-  <% end %>
+  <div class="field">
+  <%= form.label :user %>
+  <%= form.select(
+          :user_id,
+          options_for_select(@users.map{ |user| [ user.name, user.id ] })
+       ) %>
+  </div>
+
+    <div class="field">
+      <label>Others</label>
+      <%= form.select(
+              :users,
+              options_for_select(@users.map{ |user| [ user.name, user.id ] }),
+              {},
+              { :multiple => true }
+          ) %>
+    </div>
 
   <div class="actions">
     <%= form.submit %>

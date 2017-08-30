@@ -9,6 +9,7 @@ class ExpensesController < ApplicationController
     end
 
     @expenses = Expense.all
+    @users = User.all
   end
 
   # GET /expenses/1
@@ -26,6 +27,7 @@ class ExpensesController < ApplicationController
     end
 
     @expense = Expense.new
+    @users = User.all
   end
 
   # GET /expenses/1/edit
@@ -33,6 +35,8 @@ class ExpensesController < ApplicationController
     if !@current_user
       redirect_to login_path
     end
+
+    @users = User.all
   end
 
   # POST /expenses
@@ -43,13 +47,17 @@ class ExpensesController < ApplicationController
     end
 
     @expense = Expense.new(expense_params)
+    @users = @expense.users
 
     respond_to do |format|
       if @expense.save
+        @expense.users.each do |k,v|
+          User.find(k) << @expense
+        end
         format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
         format.json { render :show, status: :created, location: @expense }
       else
-        format.html { render :new }
+        format.html { redirect_to :new }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
     end
@@ -95,6 +103,6 @@ class ExpensesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def expense_params
-      params.require(:expense).permit(:title, :amount_cents, :user_id)
+      params.require(:expense).permit(:title, :amount_cents, :user_id, :users)
     end
 end
