@@ -91,6 +91,32 @@ class ExpensesController < ApplicationController
     end
   end
 
+  # GET /expenses/global
+  def global
+    if !@current_user
+      redirect_to login_path
+    end
+
+    @user = User.find(@current_user.id)
+    @expenses = @user.expenses
+
+    @user_spent = 0
+    @users_debtor = 0
+
+    @expenses.each do |expense|
+      @number_of_users = expense.users.count
+      @final_expense = (expense.amount_cents / @number_of_users) * (@number_of_users - 1)
+
+      if expense.user_id == @user.id
+        @user_spent += @final_expense
+      else
+        @users_debtor += @final_expense
+      end
+    end
+
+    @global_user = @user_spent - @users_debtor
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_expense
