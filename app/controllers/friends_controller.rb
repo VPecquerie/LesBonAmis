@@ -3,6 +3,7 @@ class FriendsController < ApplicationController
   def index
     if !@current_user
       redirect_to login_path
+      return
     end
 
     @users = User.all
@@ -11,6 +12,7 @@ class FriendsController < ApplicationController
   def show
     if !@current_user
       redirect_to login_path
+      return
     end
 
     @friend = User.find(params[:id])
