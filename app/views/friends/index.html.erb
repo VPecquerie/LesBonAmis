@@ -1,0 +1,6 @@
+<h1>Voir les dépenses</h1>
+<% @users.each do |user| %>
+  <% if user.id != @current_user.id %>
+   <p><%= link_to user.name, friends_show_path(user) %></td></p>
+  <% end %>
+<% end %>

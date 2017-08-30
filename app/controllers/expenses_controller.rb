@@ -6,6 +6,7 @@ class ExpensesController < ApplicationController
   def index
     if !@current_user
       redirect_to login_path
+      return
     end
 
     @expenses = Expense.all
@@ -17,6 +18,7 @@ class ExpensesController < ApplicationController
   def show
     if !@current_user
       redirect_to login_path
+      return
     end
   end
 
@@ -24,6 +26,7 @@ class ExpensesController < ApplicationController
   def new
     if !@current_user
       redirect_to login_path
+      return
     end
 
     @expense = Expense.new
@@ -34,6 +37,7 @@ class ExpensesController < ApplicationController
   def edit
     if !@current_user
       redirect_to login_path
+      return
     end
 
     @users = User.all
@@ -44,6 +48,7 @@ class ExpensesController < ApplicationController
   def create
     if !@current_user
       redirect_to login_path
+      return
     end
 
     @expense = Expense.new(expense_params)
@@ -64,6 +69,7 @@ class ExpensesController < ApplicationController
   def update
     if !@current_user
       redirect_to login_path
+      return
     end
 
     respond_to do |format|
@@ -82,6 +88,7 @@ class ExpensesController < ApplicationController
   def destroy
     if !@current_user
       redirect_to login_path
+      return
     end
 
     @expense.destroy
@@ -95,6 +102,7 @@ class ExpensesController < ApplicationController
   def global
     if !@current_user
       redirect_to login_path
+      return
     end
 
     @user = User.find(@current_user.id)

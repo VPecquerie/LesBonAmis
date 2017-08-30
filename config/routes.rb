@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   get 'users/login' => 'users#login', as: :login
   post 'users/login' => 'users#check', as: :check
-  delete 'logout' => 'users#logout', as: :logout
+  get 'logout' => 'users#logout', as: :logout
   get 'expenses/global' => 'expenses#global', as: :global
+  get 'friends' => 'friends#index', as: :friends_index
+  get 'friends/:id' => 'friends#show', as: :friends_show
   resources :expenses
   resources :users
   root 'home#index'
