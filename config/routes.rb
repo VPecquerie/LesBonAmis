@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'users/login' => 'users#login', as: :login
   post 'users/login' => 'users#check', as: :check
   delete 'logout' => 'users#logout', as: :logout
+  get 'expenses/global' => 'expenses#global', as: :global
   resources :expenses
   resources :users
   root 'home#index'
