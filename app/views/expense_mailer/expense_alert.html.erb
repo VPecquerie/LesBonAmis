@@ -1,0 +1,18 @@
+<!doctype html>
+
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+
+  <title><%= @expense.title %></title>
+
+</head>
+
+<body>
+
+    <h1><%= @expense.title %></h1>
+    
+    <%= @expense.payer.name %> a payé <%= @expense.amount_money %> pour <%= @expense.title %>
+    
+</body>
+</html>
