@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the Prototype of "Les Bons Amis"
 
-Things you may want to cover:
+Ruby version: 2.4.1
 
-* Ruby version
+Rails version: 5.1.3
 
-* System dependencies
+Base SQLite version: 3.20.1
 
-* Configuration
+gem 'sqlite3'  
+gem 'puma', '~> 3.7'  
+gem 'sass-rails', '~> 5.0'  
+gem 'uglifier', '>= 1.3.0'  
+gem 'coffee-rails', '~> 4.2'  
+gem 'turbolinks', '~> 5'  
+gem 'jbuilder', '~> 2.5'  
+gem 'bcrypt', '~> 3.1.7'  
+gem 'money-rails', '~>1'  
 
-* Database creation
+:development, :test  
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]  
+  gem 'capybara', '~> 2.13'  
+  gem 'selenium-webdriver'  
+  gem 'pry-rails'  
 
-* Database initialization
+group :development  
+  gem 'web-console', '>= 3.3.0'  
+  gem 'listen', '>= 3.0.5', '< 3.2'  
+  gem 'spring'  
+  gem 'spring-watcher-listen', '~> 2.0.0'  
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]  

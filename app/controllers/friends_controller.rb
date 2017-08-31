@@ -37,7 +37,7 @@ class FriendsController < ApplicationController
       @user_expense = expense.amount_money / @number_of_users
 
       if expense.user_id == @current_user.id
-        @user_spent += @user_expense * (@number_of_users - 1)
+        @user_spent += @user_expense
       else
         @user_debtor += @user_expense
       end
