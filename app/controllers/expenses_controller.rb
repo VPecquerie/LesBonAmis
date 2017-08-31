@@ -106,22 +106,13 @@ class ExpensesController < ApplicationController
 
     @user = User.find(@current_user.id)
     @expenses = @user.expenses
-
-    @user_spent = 0
-    @users_debtor = 0
+    @user_expenses_beneficiary = Array.new
 
     @expenses.each do |expense|
-      @number_of_users = expense.users.count
-      @final_expense = (expense.amount_cents / @number_of_users) * (@number_of_users - 1)
-
-      if expense.user_id == @user.id
-        @user_spent += @final_expense
-      else
-        @users_debtor += @final_expense
-      end
+       if expense.user_id != @user.id
+        @user_expenses_beneficiary.push(expense)
+       end
     end
-
-    @global_user = @user_spent - @users_debtor
   end
 
   private
