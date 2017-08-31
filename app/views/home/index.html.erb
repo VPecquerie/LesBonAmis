@@ -1,2 +1,9 @@
 <h1>Les Bons Amis</h1>
-<%= link_to 'Ajouter une dépense', new_expense_path %>
+<h2>Bonjour, <%= @current_user.name %></h2>
+
+<p><%= link_to 'Ajouter une dépense', new_expense_path %></p>
+
+<h2>Balance Globale : <%= @global_user %> <%= @global_user.currency %></h2>
+
+<p>Tes amis te doivent <%= @user_spent %> <%= @user_spent.currency %></p>
+<p>Tu dois <%= @users_debtor %> <%= @users_debtor.currency %> à mes amis</p>
