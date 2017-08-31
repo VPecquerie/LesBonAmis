@@ -18,16 +18,29 @@
 
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">Les Bons Amis</a>
+    <%= link_to 'Les Bons Amis', root_path, class: 'navbar-brand' %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Accueil</a>
+        <li class="nav-item">
+          <%= link_to 'Accueil', root_path, class: 'nav-link' %>
         </li>
-
+        <% if !@current_user.nil? %>
+          <li class="nav-item">
+            <%= link_to 'Dépenses', expenses_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Amis', friends_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Utilisateurs', users_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Historique', expenses_history_path, class: 'nav-link' %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <% if @current_user %>
             <%= link_to 'Déconnexion', logout_path, class: 'nav-link' %>
