@@ -4,5 +4,5 @@ class ExpenseMailer < ApplicationMailer
         for beneficiary in expense.beneficiaries
             mail(to: beneficiary.email, subject: expense.title)
         end
-
+    end
 end

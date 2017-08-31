@@ -52,7 +52,7 @@ class ExpensesController < ApplicationController
     end
 
     @expense = Expense.new(expense_params)
-
+    ExpenseMailer.expense_alert(@expense).deliver_now
     respond_to do |format|
       if @expense.save
         format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
