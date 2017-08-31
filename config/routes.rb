@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/login' => 'users#login', as: :login
-  post 'users/login' => 'users#check', as: :check
+  get 'login' => 'users#login', as: :login
+  post 'login' => 'users#check', as: :check
   get 'logout' => 'users#logout', as: :logout
   get 'expenses/global' => 'expenses#global', as: :global
   get 'friends' => 'friends#index', as: :friends_index
