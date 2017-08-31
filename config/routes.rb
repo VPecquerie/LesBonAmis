@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post 'login' => 'users#check', as: :check
   get 'logout' => 'users#logout', as: :logout
   get 'expenses/history' => 'expenses#history', as: :expenses_history
-  get 'friends' => 'friends#index', as: :friends_index
+  get 'friends' => 'friends#index', as: :friends
   get 'friends/:id' => 'friends#show', as: :friends_show
   resources :expenses
   resources :users
