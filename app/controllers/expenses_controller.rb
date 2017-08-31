@@ -105,6 +105,11 @@ class ExpensesController < ApplicationController
       redirect_to login_path
     end
 
+    if params[:contest] && params[:expense_id]
+      @contestExpense = Expense.find(params[:expense_id])
+      ExpenseMailer.expense_contest(@contestExpense, @current_user).deliver_now
+    end
+
     @user = User.find(@current_user.id)
     @expenses = @user.expenses
     @user_expenses_beneficiary = Array.new

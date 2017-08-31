@@ -17,7 +17,7 @@
         <td><%= expense.amount_money %> <%= expense.amount_money.currency %></td>
         <td><%= expense.user.name %></td>
         <td><%= link_to 'Afficher', expense %></td>
-        <td><%= link_to 'Contester', expense %></td>
+        <td><%= link_to 'Contester', expenses_history_url+"?contest=true&expense_id="+expense.id.to_s %></td>
       </tr>
   <% end %>
   </tbody>
