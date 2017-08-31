@@ -24,6 +24,12 @@ body
 {
     padding-top: 5rem;
 }
+
+.container-fluid {
+    padding-bottom: 60px;
+    margin-bottom: 30px;
+}
+
 .footer
 {
     position: absolute;
