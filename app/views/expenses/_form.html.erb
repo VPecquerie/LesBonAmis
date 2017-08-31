@@ -23,21 +23,37 @@
 
   <div class="field">
   <%= form.label :user %>
-  <%= form.select(
-          :user_id,
-          options_for_select(@users.map{ |user| [ user.name, user.id ] })
-       ) %>
+    <% if @expense.persisted? %>
+      <%= form.select(
+              :user_id,
+              options_for_select(@users.map{ |user| [ user.name, user.id ] }, @expense.user.id)
+           ) %>
+    <% else %>
+      <%= form.select(
+              :user_id,
+              options_for_select(@users.map{ |user| [ user.name, user.id ] })
+          ) %>
+    <% end %>
   </div>
 
-    <div class="field">
-      <label>Others</label>
+  <div class="field">
+    <label>Others</label>
+    <% if @expense.persisted? %>
+      <%= form.select(
+              :user_ids,
+              options_for_select(@users.map{ |user| [ user.name, user.id ] }, @expense.users.ids),
+              {},
+              { :multiple => true }
+          ) %>
+    <% else %>
       <%= form.select(
               :user_ids,
               options_for_select(@users.map{ |user| [ user.name, user.id ] }),
               {},
               { :multiple => true }
           ) %>
-    </div>
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
