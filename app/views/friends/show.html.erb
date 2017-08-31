@@ -1,5 +1,6 @@
 <h1>Depenses globale avec "<%= @friend.name %>"</h1>
-<p>Balance Globale : <%= @global_user %> <%= @global_user.currency %></p>
-
-<p>Il me doit <%= @user_spent %> <%= @user_spent.currency %></p>
-<p>Je lui dois <%= @user_debtor %> <%= @user_debtor.currency %></p>
+<% if @global_user < 0 %>
+  <p>Je lui dois <%= @global_user.abs %> <%= @global_user.currency %></p>
+<% else %>
+  <p>Il me doit <%= @global_user.abs %> <%= @global_user.currency %></p>
+<% end %>
