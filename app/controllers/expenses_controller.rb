@@ -113,7 +113,7 @@ class ExpensesController < ApplicationController
 
     @expenses.each do |expense|
       @number_of_users = expense.users.count
-      @user_expense = expense.amount / @number_of_users
+      @user_expense = expense.amount_money / @number_of_users
 
       if expense.user_id == @user.id
         @user_spent += @user_expense * (@number_of_users - 1)
